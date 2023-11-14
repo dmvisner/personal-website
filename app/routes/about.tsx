@@ -2,8 +2,8 @@ import { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
     return [
-      { title: "Derek M. Visner" },
-      { name: "description", content: "Derek M. Visner" },
+      { title: "About Derek" },
+      { name: "description", content: "About Derek" },
     ];
   };
 
