@@ -1,9 +1,8 @@
 import React from "react";
 
-import WithChildren from "~/types/props/WithChildren";
-import WithClassName from "~/types/props/WithClassName";
+import WithClassName from "~/types/props/with-classname";
 
-type ButtonProps = WithChildren & WithClassName
+type ButtonProps = React.PropsWithChildren & WithClassName
 
 const Button : React.FC<ButtonProps> = ({ children, className }) => {
     return (

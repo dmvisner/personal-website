@@ -64,6 +64,9 @@ const Header : React.FC<HeaderProps> = ({ title, isDarkMode }) => {
                     <li>
                         <HeaderLink href="/trading" text="Trading"/>
                     </li>
+                    <li>
+                        <HeaderLink href="/reading" text="Reading"/>
+                    </li>
                 </ul>
                 <div>
                     <LightDarkModeButton isDarkMode={isDarkMode}/>

@@ -13,13 +13,12 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 
-import styles from "./tailwind.css";
+import "./tailwind.css";
 import favicon from "./favicon.ico";
 import { setTheme, getTheme } from "./cookies/theme-cookie.server";
 import Header from "./components/header";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
   { rel: "icon", href: favicon }
 ];
 
@@ -45,9 +44,9 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="w-screen bg-sky-50 transition duration-1000 ease-in-out dark:bg-sky-950 dark:text-white">
+      <body className="w-screen bg-white transition duration-1000 ease-in-out dark:bg-sky-950 dark:text-white">
         <Header isDarkMode={isDarkMode} title="Derek M. Visner"/>
-        <div className="flex justify-center pt-10">
+        <div className="flex justify-center pt-10 w-screen">
           <Outlet />
         </div>
         <ScrollRestoration />
