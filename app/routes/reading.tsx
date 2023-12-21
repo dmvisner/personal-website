@@ -1,9 +1,7 @@
 import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import Book from "~/types/model/book";
 
 import BookList from "~/components/common/book-list";
-import BookService from "~/types/services/BookService";
 
 export const meta: MetaFunction = () => {
     return [
@@ -23,9 +21,6 @@ export default function Reading() {
    const books = useLoaderData<typeof loader>();
     return (
         <div className="w-1/2">
-            <BookList
-                books={books}
-            />
         </div>
     );
 }

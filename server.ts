@@ -4,7 +4,9 @@ import { ServerBuild, installGlobals } from "@remix-run/node";
 import express from "express";
 
 import { getBookService } from "~/services/book-service";
-import BookRepository from "~/backend/BookRepository";
+import BookRepository from "~/backend/book-repository.js";
+import TradeRepository from "~/backend/trade-repository.js";
+import { getTradeService } from "~/services/trade-service.js";
 
 installGlobals();
 
@@ -41,7 +43,8 @@ app.all(
       : await import("./build/server/index.js") as unknown as ServerBuild,
     getLoadContext: () => {
       return {
-        BookService: getBookService(BookRepository)
+        BookService: getBookService(BookRepository),
+        TradeService: getTradeService(TradeRepository),
       }
     }
   })

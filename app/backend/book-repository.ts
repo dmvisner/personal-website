@@ -1,8 +1,9 @@
 import prisma from "~/types/prisma";
 import { Book as PrismaBook } from "@prisma/client"; 
 
-import Repository from "~/types/Repository";
+import Repository from "~/types/repository";
 import Book from "~/types/model/book";
+import DistributiveOmit from "~/types/utility/distributive-omit";
 
 const BookRepository: Repository<Book> = {
     getAll: async () => {
@@ -17,6 +18,32 @@ const BookRepository: Repository<Book> = {
         });
 
         return book ? convertPrismaToBook(book) : null;
+    },
+    create: async (newBook: DistributiveOmit<Book, 'id'>): Promise<Book> => {
+        const additionalData = newBook.status === 'finished'
+            ? {
+                end_date: newBook.endDate,
+                rating: newBook.rating,
+                thoughts: newBook.thoughts
+            }
+            : {};
+
+        const createdBook = await prisma.book.create({
+            data: {
+                title: newBook.title,
+                author: newBook.author,
+                start_date: newBook.startDate,
+                ...additionalData
+            }
+        });
+
+        return convertPrismaToBook(createdBook);
+    },
+    update: function (id: number, data: Partial<Book>): Promise<Book | null> {
+        throw new Error("Function not implemented.");
+    },
+    delete: function (id: number): Promise<Book | null> {
+        throw new Error("Function not implemented.");
     }
 }
 

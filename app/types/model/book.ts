@@ -2,18 +2,18 @@ type AnyBook = {
     id: number;
     title: string;
     author: string;
-    startDate: string;
+    startDate: Date;
 }
 
-type UnfinishedBook = {
+export type UnfinishedBook = {
     status: "reading";
 } & AnyBook
 
 type Stars = number;
 
-type FinishedBook = {
+export type FinishedBook = {
     status: "finished";
-    endDate: string;
+    endDate: Date;
     thoughts: string;
     rating: Stars;
 } & AnyBook

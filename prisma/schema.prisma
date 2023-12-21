@@ -10,11 +10,30 @@ datasource db {
 model Book {
   id         Int     @id @default(autoincrement())
   title      String
-  start_date String
-  end_date   String?
+  start_date DateTime
+  end_date   DateTime?
   rating     Int?
   thoughts   String?
   author     String
+}
+
+model Trade {
+  id                  Int     @id @default(autoincrement())
+  underlying          String
+  open_date           DateTime
+  close_date          DateTime?
+  prediction          String
+  rationale           String?  
+  open_price          Decimal
+  close_price         Decimal?
+  current_price       Decimal
+  buying_power_effect Decimal
+  commission_and_fees Decimal
+  strategy            String
+  maxProfit           Decimal?
+  tailProfit          Decimal?
+  credit              Decimal?
+  debit               Decimal?
 }
 
 
